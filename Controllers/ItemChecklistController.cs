@@ -21,7 +21,7 @@ namespace ChecklistApi.Controllers
         /// </summary>
         /// <param name="id">O ID do item do checklist a ser obtido.</param>
         /// <returns>O item do checklist correspondente ao ID fornecido.</returns>
-        [Authorize]
+
         [HttpGet("{id}")]
         public async Task<ActionResult<ItemChecklistDTO>> GetItemChecklistById(int id)
         {
@@ -39,7 +39,7 @@ namespace ChecklistApi.Controllers
         /// Obtém todos os itens do checklist.
         /// </summary>
         /// <returns>Uma lista de todos os itens do checklist.</returns>
-        [Authorize]
+
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ItemChecklistDTO>>> GertAllItemChecklist()
         {
@@ -52,7 +52,7 @@ namespace ChecklistApi.Controllers
         /// </summary>
         /// <param name="itemChecklistDTO">Os dados do item do checklist a ser adicionado.</param>
         /// <returns>O item do checklist adicionado.</returns>
-        [Authorize]
+
         [HttpPost]
         public async Task<ActionResult> AddItemChecklist([FromBody] ItemChecklistDTO itemChecklistDTO)
         {
@@ -66,7 +66,7 @@ namespace ChecklistApi.Controllers
         /// <param name="id">O ID do item do checklist a ser atualizado.</param>
         /// <param name="itemChecklistDTO">Os dados atualizados do item do checklist.</param>
         /// <returns>Resposta HTTP com o status da operação.</returns>
-        [Authorize]
+
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateItemChecklist(int id, [FromBody] ItemChecklistDTO itemChecklistDTO)
         {
@@ -86,7 +86,7 @@ namespace ChecklistApi.Controllers
         /// </summary>
         /// <param name="id">O ID do item do checklist a ser excluído.</param>
         /// <returns>Resposta HTTP com o status da operação.</returns>
-        [Authorize]
+
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteItemChecklist (int id)
         {

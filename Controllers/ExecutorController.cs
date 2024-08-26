@@ -28,7 +28,7 @@ namespace ChecklistApi.Controllers
         /// </summary>
         /// <param name="id">O ID do executor a ser obtido.</param>
         /// <returns>O executor correspondente ao ID fornecido.</returns>
-        [Authorize]
+
         [HttpGet("{id}")]
         public async Task<ActionResult<ExecutorDTO>> GetExecutorById(int id)
         {
@@ -46,7 +46,7 @@ namespace ChecklistApi.Controllers
         /// Obtém todos os executores.
         /// </summary>
         /// <returns>Uma lista de todos os executores.</returns>
-        [Authorize]
+
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ExecutorDTO>>> GetAllExecutor()
         {
@@ -59,7 +59,7 @@ namespace ChecklistApi.Controllers
         /// </summary>
         /// <param name="executorDTO">Os dados do executor a ser adicionado.</param>
         /// <returns>O executor adicionado.</returns>
-        [Authorize]
+
         [HttpPost]
         public async Task<ActionResult> AddExecutor([FromBody] ExecutorDTO executorDTO)
         {
@@ -73,7 +73,7 @@ namespace ChecklistApi.Controllers
         /// <param name="id">O ID do executor a ser atualizado.</param>
         /// <param name="executorDTO">Os dados atualizados do executor.</param>
         /// <returns>Resposta HTTP com o status da operação.</returns>
-        [Authorize]
+
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateExecutor(int id, [FromBody] ExecutorDTO executorDTO)
         {
@@ -93,7 +93,7 @@ namespace ChecklistApi.Controllers
         /// </summary>
         /// <param name="id">O ID do executor a ser excluído.</param>
         /// <returns>Resposta HTTP com o status da operação.</returns>
-        [Authorize]
+
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteExecutor(int id)
         {

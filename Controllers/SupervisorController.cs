@@ -19,7 +19,7 @@ public class SupervisorController : ControllerBase
     /// </summary>
     /// <param name="id">O ID do supervisor a ser obtido.</param>
     /// <returns>O supervisor correspondente ao ID fornecido.</returns>
-    [Authorize]
+
     [HttpGet("{id}")]
     public async Task<ActionResult<SupervisorDTO>> GetSupervisorById(int id)
     {
@@ -35,7 +35,7 @@ public class SupervisorController : ControllerBase
     /// Obtém todos os supervisores.
     /// </summary>
     /// <returns>Uma lista de todos os supervisores.</returns>
-    [Authorize]
+
     [HttpGet]
     public async Task<ActionResult<IEnumerable<SupervisorDTO>>> GetAllSupervisor()
     {
@@ -48,7 +48,7 @@ public class SupervisorController : ControllerBase
     /// </summary>
     /// <param name="supervisorDTO">Os dados do supervisor a ser adicionado.</param>
     /// <returns>O supervisor adicionado.</returns>
-    [Authorize]
+
     [HttpPost]
     public async Task<ActionResult> AddSupervisor([FromBody] SupervisorDTO supervisorDTO)
     {
@@ -62,7 +62,7 @@ public class SupervisorController : ControllerBase
     /// <param name="id">O ID do supervisor a ser atualizado.</param>
     /// <param name="supervisorDTO">Os dados atualizados do supervisor.</param>
     /// <returns>Resposta HTTP com o status da operação.</returns>
-    [Authorize]
+
     [HttpPut("{id}")]
     public async Task<ActionResult> UpdateSupervisor(int id, [FromBody] SupervisorDTO supervisorDTO)
     {
@@ -82,7 +82,7 @@ public class SupervisorController : ControllerBase
     /// </summary>
     /// <param name="id">O ID do supervisor a ser excluído.</param>
     /// <returns>Resposta HTTP com o status da operação.</returns>
-    [Authorize]
+
     [HttpDelete("{id}")]
     public async Task<ActionResult> DeleteSupervisor(int id)
     {

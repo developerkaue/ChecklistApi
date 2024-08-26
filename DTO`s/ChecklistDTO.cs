@@ -10,6 +10,6 @@ namespace ChecklistApi.DTO_s
         public int ExecutorId { get; set; }
         public int? SupervisorId { get; set; }
         public bool? Aprovado { get; set; }
-        public List<ItemChecklistDTO> Itens { get; set; } // List of items
+        public List<ItemChecklistDTO> Itens { get; set; } 
     }
 }

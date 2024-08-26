@@ -9,10 +9,12 @@ using System.Reflection;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
-// Add services to the container.
 
+// Adiciona a configuração do arquivo appsettings.json
+builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+
+// Configura os serviços
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<ApplicationDbContext>();
@@ -31,7 +33,9 @@ builder.Services.AddAutoMapper(typeof(MappingProfile));
 builder.Logging.ClearProviders();
 builder.Logging.AddConsole();
 
-var key = Encoding.ASCII.GetBytes("EstaChaveTemExatamenteTrintaEDoisBytes!");
+// Configura a autenticação JWT
+var jwtSettings = builder.Configuration.GetSection("Jwt");
+var key = Encoding.ASCII.GetBytes(jwtSettings["Key"]);
 
 builder.Services.AddAuthentication(options =>
 {
@@ -45,12 +49,13 @@ builder.Services.AddAuthentication(options =>
     {
         ValidateIssuerSigningKey = true,
         IssuerSigningKey = new SymmetricSecurityKey(key),
-        ValidateIssuer = false,
-        ValidateAudience = false
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidIssuer = jwtSettings["Issuer"],
+        ValidAudience = jwtSettings["Audience"]
     };
 });
 
-builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "ChecklistAPI", Version = "v1" });
@@ -59,13 +64,11 @@ builder.Services.AddSwaggerGen(c =>
     var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
     c.IncludeXmlComments(xmlPath);
 
-
-
     // Configuração para autenticação JWT
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
-        Description = "Essa API é protegida com Autorização JWT",
-        Name = "Authorize",
+        Description = "Entre com o token JWT no formato: Bearer {seu_token}",
+        Name = "Authorization",
         In = ParameterLocation.Header,
         Type = SecuritySchemeType.ApiKey,
         Scheme = "Bearer"
@@ -87,7 +90,6 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
-
 var app = builder.Build();
 
 app.UseSwaggerUI(c =>
@@ -103,14 +105,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-
-
 app.UseHttpsRedirection();
-
 app.UseAuthentication();
-
 app.UseAuthorization();
-
 app.MapControllers();
-
 app.Run();
