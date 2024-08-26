@@ -1,26 +1,14 @@
 # Checklist API
+## DescriÃ§Ã£o
 
-## Índice
-
-- [Descrição](#descrição)
-- [Recursos](#recursos)
-- [Tecnologias e Pacotes](#tecnologias-e-pacotes)
-- [Configuração](#configuração)
-- [Uso](#uso)
-- [Segurança](#segurança)
-- [Contribuição](#contribuição)
-- [Licença](#licença)
-
-## Descrição
-
-Este projeto é uma aplicação para gerenciar checklists de veículos. Ele permite a criação, visualização e gerenciamento de checklists que devem ser realizados diariamente após o carregamento e descarregamento de produtos. A aplicação é projetada com uma abordagem orientada a domínio (DDD) para garantir uma estrutura de código limpa e escalável.
+Este projeto Ã© uma aplicaÃ§Ã£o para gerenciar checklists de veÃ­culos. Ele permite a criaÃ§Ã£o, visualizaÃ§Ã£o e gerenciamento de checklists que devem ser realizados diariamente apÃ³s o carregamento e descarregamento de produtos. A aplicaÃ§Ã£o Ã© projetada com uma abordagem orientada a domÃ­nio (DDD) para garantir uma estrutura de cÃ³digo limpa e escalÃ¡vel.
 
 ## Recursos
 
-- **Autenticação JWT**: Autenticação segura utilizando tokens JWT.
-- **CRUD Completo**: Operações completas de CRUD para checklists, veículos, e executores.
-- **Validação de Dados**: Validação de dados robusta tanto no lado do cliente quanto no lado do servidor.
-- **Documentação API com Swagger**: Documentação interativa da API para facilitar o teste e a integração.
+- **AutenticaÃ§Ã£o JWT**: AutenticaÃ§Ã£o segura utilizando tokens JWT.
+- **CRUD Completo**: OperaÃ§Ãµes completas de CRUD para checklists, veÃ­culos, e executores.
+- **ValidaÃ§Ã£o de Dados**: ValidaÃ§Ã£o de dados robusta tanto no lado do cliente quanto no lado do servidor.
+- **DocumentaÃ§Ã£o API com Swagger**: DocumentaÃ§Ã£o interativa da API para facilitar o teste e a integraÃ§Ã£o.
 
 ## Tecnologias e Pacotes
 
@@ -33,7 +21,7 @@ Este projeto é uma aplicação para gerenciar checklists de veículos. Ele permite 
   - `Microsoft.EntityFrameworkCore.Tools`
 - **AutoMapper**:
   - `AutoMapper.Extensions.Microsoft.DependencyInjection`
-- **Autenticação JWT**:
+- **AutenticaÃ§Ã£o JWT**:
   - `Microsoft.AspNetCore.Authentication.JwtBearer`
   - `Microsoft.IdentityModel.Tokens`
 - **Swagger**:
@@ -41,17 +29,17 @@ Este projeto é uma aplicação para gerenciar checklists de veículos. Ele permite 
 - **Banco de Dados**:
   - **SQL Server 16**
 
-## Configuração
+## ConfiguraÃ§Ã£o
 
 ### Ambiente de Desenvolvimento
 
-1. **Clone o repositório**:
+1. **Clone o repositÃ³rio**:
 
    ```bash
-   git clone https://github.com/developerkaue/checklistapi
+   git clone https://github.com/developerkaue/ChecklistApi
    ```
 
-2. **Navegue até o diretório do projeto**:
+2. **Navegue atÃ© o diretÃ³rio do projeto**:
 
    ```bash
    cd ChecklistApi
@@ -63,11 +51,12 @@ Este projeto é uma aplicação para gerenciar checklists de veículos. Ele permite 
    dotnet restore
    ```
 
-4. **Configurar variáveis de ambiente**: Defina as variáveis necessárias para a aplicação, como a chave secreta JWT e as credenciais do banco de dados.
+4. **Configurar variÃ¡veis de ambiente**: Defina as variÃ¡veis necessÃ¡rias para a aplicaÃ§Ã£o, como a chave secreta JWT e as credenciais do banco de dados.
     
-   (JWT esta diretamente no codigo para facilitar o teste e demonstrar o uso do token, claro que em ambiente de produção isso deverá estar em variaveis de ambiente para manter a segurança da api.)
+   (JWT esta diretamente no codigo para facilitar o teste e demonstrar o uso do token, claro que em ambiente de produÃ§Ã£o isso deverÃ¡ estar em variaveis de ambiente para manter a seguranÃ§a da api.)
    Login: "admin" - "password"
-   Exemplo de configuração de variáveis de ambiente no arquivo `appsettings.json`:
+
+   Exemplo de configuraÃ§Ã£o de variÃ¡veis de ambiente no arquivo `appsettings.json`:
 
    ```json
    {
@@ -84,9 +73,9 @@ Este projeto é uma aplicação para gerenciar checklists de veículos. Ele permite 
    dotnet run
    ```
 
-### Ambiente de Produção
+### Ambiente de ProduÃ§Ã£o
 
-1. **Configurar o ambiente**: Siga as melhores práticas para segurança, como usar variáveis de ambiente e configurar um serviço de gerenciamento de segredos.
+1. **Configurar o ambiente**: Siga as melhores prÃ¡ticas para seguranÃ§a, como usar variÃ¡veis de ambiente e configurar um serviÃ§o de gerenciamento de segredos.
 
 2. **Publicar o projeto**:
 
@@ -94,31 +83,31 @@ Este projeto é uma aplicação para gerenciar checklists de veículos. Ele permite 
    dotnet publish -c Release
    ```
 
-3. **Configurar o servidor**: Siga as diretrizes do seu servidor para hospedar e configurar a aplicação.
+3. **Configurar o servidor**: Siga as diretrizes do seu servidor para hospedar e configurar a aplicaÃ§Ã£o.
 
 ## Uso
 
-- **Acesse a documentação da API**: Navegue até `http://localhost:5000/swagger` para interagir com a documentação Swagger e testar os endpoints da API.
-- **Autenticação**: Use o endpoint de login para obter um token JWT e inclua-o no cabeçalho `Authorization` para acessar os endpoints protegidos.
+- **Acesse a documentaÃ§Ã£o da API**: Navegue atÃ© `http://localhost:5000/swagger` para interagir com a documentaÃ§Ã£o Swagger e testar os endpoints da API.
+- **AutenticaÃ§Ã£o**: Use o endpoint de login para obter um token JWT e inclua-o no cabeÃ§alho `Authorization` para acessar os endpoints protegidos.
 
-## Segurança
+## SeguranÃ§a
 
-- **Segurança dos Tokens**: Certifique-se de que os tokens JWT são mantidos seguros e nunca expostos.
-- **Variáveis de Ambiente**: Armazene chaves e credenciais em variáveis de ambiente em vez de codificá-las diretamente no código.
-- **Revisão de Segurança**: Realize revisões de segurança regulares e audite as permissões de acesso.
+- **SeguranÃ§a dos Tokens**: Certifique-se de que os tokens JWT sÃ£o mantidos seguros e nunca expostos.
+- **VariÃ¡veis de Ambiente**: Armazene chaves e credenciais em variÃ¡veis de ambiente em vez de codificÃ¡-las diretamente no cÃ³digo.
+- **RevisÃ£o de SeguranÃ§a**: Realize revisÃµes de seguranÃ§a regulares e audite as permissÃµes de acesso.
 
-## Contribuição
+## ContribuiÃ§Ã£o
 
-Sinta-se à vontade para contribuir com o projeto! Aqui estão alguns passos para contribuir:
+Sinta-se Ã  vontade para contribuir com o projeto! Aqui estÃ£o alguns passos para contribuir:
 
-1. **Fork o repositório**.
-2. **Crie uma branch para a sua modificação**:
+1. **Fork o repositÃ³rio**.
+2. **Crie uma branch para a sua modificaÃ§Ã£o**:
    
    ```bash
    git checkout -b sua-modificacao
    ```
 
-3. **Faça suas alterações e commit**:
+3. **FaÃ§a suas alteraÃ§Ãµes e commit**:
    
    ```bash
    git commit -am 'Adiciona nova funcionalidade'
